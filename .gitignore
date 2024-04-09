@@ -127,7 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+*mig.py
 # Spyder project settings
 .spyderproject
 .spyproject
