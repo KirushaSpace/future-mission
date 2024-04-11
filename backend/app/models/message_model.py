@@ -23,3 +23,7 @@ class Message(BaseUUIDModel, MessageBase, table=True):
     task: Optional["Task"] = Relationship(
         back_populates="message", sa_relationship_kwargs={"lazy": "selectin"}
     )
+
+    file: List["FileMedia"] = Relationship(
+        back_populates="message", sa_relationship_kwargs={"lazy": "selectin"}
+    )

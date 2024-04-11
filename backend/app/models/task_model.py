@@ -13,3 +13,11 @@ class Task(BaseUUIDModel, TaskBase, table=True):
     message: Optional["Message"] = Relationship(
         back_populates="task", sa_relationship_kwargs={"lazy": "joined"}
     )
+
+    test: Optional["Test"] = Relationship(
+        back_populates="task", sa_relationship_kwargs={"lazy": "selectin"}
+    )
+
+    table: Optional["Table"] = Relationship(
+        back_populates="task", sa_relationship_kwargs={"lazy": "selectin"}
+    )
