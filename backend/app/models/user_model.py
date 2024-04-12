@@ -25,7 +25,7 @@ class User(BaseUUIDModel, UserBase, table=True):
         back_populates="users", link_model=ChatUserLink, sa_relationship_kwargs={"lazy": "joined"}
     )
 
-    messeges: List["Massege"] = Relationship(
+    messages: List["Message"] = Relationship(
         back_populates="user", sa_relationship_kwargs={"lazy": "selectin"}
     )
 

@@ -19,6 +19,7 @@ class Message(BaseUUIDModel, MessageBase, table=True):
     user: Optional["User"] = Relationship(
         back_populates="masseges", sa_relationship_kwargs={"lazy": "joined"}
     )
+    user_id: Optional[UUID] = Field(default=None, foreign_key="User.id")
 
     task: Optional["Task"] = Relationship(
         back_populates="message", sa_relationship_kwargs={"lazy": "selectin"}
