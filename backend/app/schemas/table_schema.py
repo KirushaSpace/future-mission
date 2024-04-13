@@ -20,11 +20,11 @@ class TableCreate(TableBase):
     task_id: UUID
 
 
-class QuestionUpdate(TableBase):
+class TableUpdate(TableBase):
     pass
 
 
-class QuestionRead(TableBase):
+class TableRead(TableBase):
     id: UUID
     task_id: UUID
     cols_rows: Optional[List[Col_rowRead]] = []

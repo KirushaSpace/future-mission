@@ -12,7 +12,7 @@ class LoginSchema(BaseModel):
 
 class UserCreateWithRole(UserBase):
     password: Optional[str]
-    role_id: Optional[UUID]
+    role: str
 
     class Config:
         hashed_password = None
