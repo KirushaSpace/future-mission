@@ -1,5 +1,5 @@
 from sqlmodel import  SQLModel, Relationship, Field
-from typing import Optional
+from typing import Optional, List
 from uuid import UUID
 
 from app.models.base_model import BaseUUIDModel
@@ -15,8 +15,8 @@ class Test(BaseUUIDModel, TestBase, table=True):
     )
     task_id: Optional[UUID] = Field(default=None, foreign_key="Task.id")
 
-    questions: Optional["Question"] = Relationship(
-        back_populates="test", sa_relationship_kwargs={"lazy": "selecin"} 
+    questions: List["Question"] = Relationship(
+        back_populates="test", sa_relationship_kwargs={"lazy": "selectin"} 
     )
 
 
@@ -30,8 +30,8 @@ class Question(BaseUUIDModel, QuestionBase, table=True):
     )
     test_id: Optional[UUID] = Field(default=None, foreign_key="Test.id")
 
-    answers: Optional["Answer"] = Relationship(
-        back_populates="question", sa_relationship_kwargs={"lazy": "selecin"}
+    answers: List["Answer"] = Relationship(
+        back_populates="question", sa_relationship_kwargs={"lazy": "selectin"}
     )
 
 

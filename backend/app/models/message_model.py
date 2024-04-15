@@ -17,7 +17,7 @@ class Message(BaseUUIDModel, MessageBase, table=True):
     chat_id: Optional[UUID] = Field(default=None, foreign_key="Chat.id")
 
     user: Optional["User"] = Relationship(
-        back_populates="masseges", sa_relationship_kwargs={"lazy": "joined"}
+        back_populates="messages", sa_relationship_kwargs={"lazy": "joined"}
     )
     user_id: Optional[UUID] = Field(default=None, foreign_key="User.id")
 
@@ -25,6 +25,6 @@ class Message(BaseUUIDModel, MessageBase, table=True):
         back_populates="message", sa_relationship_kwargs={"lazy": "selectin"}
     )
 
-    file: List["FileMedia"] = Relationship(
+    file: Optional["FileMedia"] = Relationship(
         back_populates="message", sa_relationship_kwargs={"lazy": "selectin"}
     )

@@ -17,14 +17,14 @@ class Col_rowRead(Col_rowBase):
 
 
 class TableCreate(TableBase):
-    task_id: UUID
+    pass
 
 
 class TableUpdate(TableBase):
-    pass
+    task_id: Optional[UUID]
 
 
 class TableRead(TableBase):
     id: UUID
-    task_id: UUID
+    task_id: Optional[UUID] = ""
     cols_rows: Optional[List[Col_rowRead]] = []

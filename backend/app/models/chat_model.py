@@ -14,7 +14,6 @@ class ChatUserLink(BaseUUIDModel, table=True):
     chat_id: Optional[UUID] = Field(
         default=None, foreign_key="Chat.id", primary_key=True
     ) 
-
     user_id: Optional[UUID] = Field(
         default=None, foreign_key="User.id", primary_key=True
     )

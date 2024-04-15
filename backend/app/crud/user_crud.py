@@ -4,11 +4,11 @@ from sqlmodel import select
 from app.db.session import AsyncSession
 from app.crud.base_crud import CRUDBase
 from app.models.user_model import User
-from app.schemas.user_schema import UserCreateWithRole, UserUpdate
+from app.schemas.user_schema import UserCreate, UserUpdate
 from app.core.security import get_password_hash, verify_password
 
 
-class CRUDUser(CRUDBase[User, UserCreateWithRole, UserUpdate]):
+class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
     async def get_by_username(
         self, 
         *, 
@@ -21,12 +21,10 @@ class CRUDUser(CRUDBase[User, UserCreateWithRole, UserUpdate]):
 
 
     async def create_user(
-        self, *, obj_in: UserCreateWithRole, db_session: Optional[AsyncSession] = None
+        self, *, obj_in: UserCreate, db_session: Optional[AsyncSession] = None
     ) -> User:
         db_session = db_session or super().get_db().session
-        print(obj_in)
         db_obj = User.model_validate(obj_in)
-        print(db_obj)
         db_obj.hashed_password = get_password_hash(obj_in.password)
         db_session.add(db_obj)
         await db_session.commit()

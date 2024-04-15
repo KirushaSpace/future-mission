@@ -1,10 +1,11 @@
 from uuid import UUID
 from typing import Optional, List
 from app.models.test_model import TestBase, QuestionBase, AnswerBase
+from sqlmodel import  SQLModel
 
 
 class AnswerCreate(AnswerBase):
-    question_id: UUID
+    pass
 
 
 class AnswerUpdate(AnswerBase):
@@ -17,7 +18,7 @@ class AnswerRead(AnswerBase):
 
 
 class QuestionCreate(QuestionBase):
-    test_id: UUID
+    answers: Optional[List[AnswerCreate]]
 
 
 class QuestionUpdate(QuestionBase):
@@ -31,8 +32,8 @@ class QuestionRead(QuestionBase):
 
 
 class TestCreate(TestBase):
-    task_id: UUID
-
+    questions: Optional[List[QuestionCreate]]
+    
 
 class TestUpdate(TestBase):
     pass
@@ -40,5 +41,6 @@ class TestUpdate(TestBase):
 
 class TestRead(TestBase):
     id: UUID
-    task_id: UUID
+    task_id: Optional[UUID] = ""
     questions: Optional[List[QuestionRead]] = []
+

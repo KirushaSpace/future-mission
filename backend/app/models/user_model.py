@@ -11,7 +11,6 @@ class UserBase(SQLModel):
         nullable=True, index=True, sa_column_kwargs={"unique": True}
     )
     role: str = Field(default='user')
-    is_active: bool
 
 
 class User(BaseUUIDModel, UserBase, table=True):

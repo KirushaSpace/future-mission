@@ -22,4 +22,4 @@ class MessageRead(MessageBase):
     file: Optional[FileMediaRead] = None
     
     class Config:
-        from_orm = True
+        from_attributes = True

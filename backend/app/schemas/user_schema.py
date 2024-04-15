@@ -10,9 +10,8 @@ class LoginSchema(BaseModel):
     password: Optional[str]
 
 
-class UserCreateWithRole(UserBase):
+class UserCreate(UserBase):
     password: Optional[str]
-    role: str
 
     class Config:
         hashed_password = None
@@ -26,7 +25,7 @@ class UserRead(UserBase):
     id: UUID
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
     
 class RoleEnum(str, Enum):

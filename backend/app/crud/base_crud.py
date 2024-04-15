@@ -56,7 +56,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db_session: Optional[AsyncSession] = None,
     ) -> ModelType:
         db_session = db_session or self.db.session
-        db_obj = self.model.model_validate(obj_in)
+        db_obj = self.model.from_orm(obj_in)
         if user_id:
             db_obj.user_id = user_id
         try:

@@ -21,4 +21,4 @@ class ChatRead(ChatBase):
     creator_id: UUID
 
     class Config:
-        from_orm = True
+        from_attributes = True

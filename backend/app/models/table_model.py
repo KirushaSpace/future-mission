@@ -17,7 +17,7 @@ class Table(BaseUUIDModel, TableBase, table=True):
     )
     task_id: Optional[UUID] = Field(default=None, foreign_key="Task.id")
 
-    cols_rows: Optional["Col_row"] = Relationship(
+    cols_rows: List["Col_row"] = Relationship(
         back_populates="table", sa_relationship_kwargs={"lazy": "selectin"}     
     )
 

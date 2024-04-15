@@ -42,7 +42,7 @@ async def create_task(
     task: TaskCreate,
     current_user: User = Depends(deps.get_current_user(required_roles=[RoleEnum.admin])),
 ) -> TaskRead:
-    new_task = await task_crud.task.create(obj_in=task, user_id=current_user.id)
+    new_task = await task_crud.task.create(obj_in=task)
     return new_task
 
 

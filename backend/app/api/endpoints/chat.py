@@ -42,7 +42,8 @@ async def create_chat(
     chat: ChatCreate,
     current_user: User = Depends(deps.get_current_user(required_roles=[RoleEnum.admin])),
 ) -> ChatRead:
-    new_chat = await chat_crud.chat.create(obj_in=chat, user_id=current_user.id)
+    chat.creator_id = current_user.id
+    new_chat = await chat_crud.chat.create(obj_in=chat)
     return new_chat
 
 

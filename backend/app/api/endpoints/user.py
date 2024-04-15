@@ -9,7 +9,7 @@ from app.crud import user_crud
 
 from app.models import User
 
-from app.schemas.user_schema import UserCreateWithRole, UserRead, UserUpdate
+from app.schemas.user_schema import UserCreate, UserRead, UserUpdate
 from app.schemas.token_schema import TokenRead
 from app.api.endpoints import deps
 
@@ -19,8 +19,9 @@ router = APIRouter()
 
 @router.post("/registartion", status_code=status.HTTP_201_CREATED)
 async def registrate_user(
-    new_user: UserCreateWithRole,
+    new_user: UserCreate,
 ) -> TokenRead:
+    print(new_user)
     user = await user_crud.user.create_user(obj_in=new_user)
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = security.create_access_token(

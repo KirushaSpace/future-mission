@@ -20,6 +20,6 @@ class FileMedia(BaseUUIDModel, FileMediaBase, table=True):
     media: Media = Relationship(
         sa_relationship_kwargs={
             "lazy": "joined",
-            "primaryjoin": "ImageMedia.media_id==Media.id",
+            "primaryjoin": "FileMedia.media_id==Media.id",
         }
     )
